@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { currentCardActions } from '../../../redux/actions';
 import  Modal  from '../components'
 
-import validate from 'utils/helpers/validate'
+import validate from 'utils/helpers/validate';
 
-const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs }) => {
+import store from '../../../redux/store';
+
+const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs, createOrder }) => {
     const [ nameValue, setNameValue ] = useState('');
     const [ phoneValue, setPhoneValue ] = useState('');
-    
-    
     
     const onCloseModal = () => {
         deleteCurrentCard();
@@ -63,7 +63,11 @@ const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs }) => {
         }
         const values = {
             name: nameValue,
-            phone: phoneValue
+            phone: phoneValue,
+            productId: card.productId,
+            productName: card.name,
+            productCategory: card.category,
+            productPrice: card.price
         }
         
         validate( {values, errors} )
@@ -71,10 +75,17 @@ const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs }) => {
         validateInputs(errors)
 
         if( !errors.name.length && !errors.phone.length ) {
-            deleteCurrentCard()
-            setNameValue('')
-            setPhoneValue('')
-            console.log(values)
+            createOrder(values)
+            .then(() => {
+                deleteCurrentCard()
+                setNameValue('')
+                setPhoneValue('')
+                console.log('success')
+            }) 
+            .catch( (err) => {
+                console.log(err);
+            })            
+            
         }
 
     }

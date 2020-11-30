@@ -6,16 +6,18 @@ import { cardsActions } from '../redux/actions';
 
 const CardsContainer = ({ getCards, setCurrentCard, items, isLoading }) => {
 
-    const CurrentCard = ( name, category, price) => {
+    const CurrentCard = ( name, category, price, _id) => {
         const currentCardData = {
             name: name,
             category: category,
-            price: price
+            price: price,
+            productId: _id
         }
 
         setCurrentCard( currentCardData );
 
     }
+
 
     const buyCheapest = () => {
         let item

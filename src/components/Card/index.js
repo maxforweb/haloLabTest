@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import './Card.scss';
 
-const Card = ({ name, category, price, setCurrentCard }) => {
+const Card = ({ _id, name, category, price, setCurrentCard }) => {
 
     
     return (
@@ -15,7 +15,7 @@ const Card = ({ name, category, price, setCurrentCard }) => {
                 <h2 className="card--price" ><span>$</span> {price} </h2>
                 <button 
                 className="card--order_button" 
-                onClick={setCurrentCard.bind(this, name, category, price)}
+                onClick={setCurrentCard.bind(this, name, category, price, _id)}
                 > BUY</button>
             </div>
         </div>

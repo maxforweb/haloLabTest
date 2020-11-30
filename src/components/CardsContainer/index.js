@@ -15,14 +15,16 @@ const CardsContainer = ({ items, isLoading, setCurrentCard, buyCheapest }) => {
                     isLoading ? (
                         <div className="loader">  </div>
                     ): 
-                    items && !isLoading ? items.map( (item, key) => (
+                    items && !isLoading ? items.map( (item) => (
                     
                         <Card 
-                            key={key}
+                            key={item._id}
                             name={item.name}
                             category={item.category}
                             price={item.price}
                             setCurrentCard={setCurrentCard}
+                            {...item}
+                            
                         />
                     ) ): (<p> Whoops, something went wrong </p>)
                 }

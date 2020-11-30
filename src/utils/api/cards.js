@@ -2,5 +2,5 @@ import {axios} from "core";
 
 
 export default {
-    getAll: () =>  axios.get()
+    getAll: () =>  axios.get('/products')
 }
