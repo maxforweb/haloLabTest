@@ -9,8 +9,6 @@ export default ( {errors, values} ) => {
             else if ( !/^[A-Za-z]+$/.test(value) ) {
                 errors.name = "Only letters allowed"
             }
-            console.log(value)
-            console.log(errors)
 
         },
 

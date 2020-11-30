@@ -52,7 +52,7 @@ const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs }) => {
        
 
         validate( {values, errors} )
-         console.log(errors)
+
         validateInputs(errors)
 
     }
@@ -76,6 +76,7 @@ const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs }) => {
             deleteCurrentCard()
             setNameValue('')
             setPhoneValue('')
+            console.log(values)
         }
 
     }
