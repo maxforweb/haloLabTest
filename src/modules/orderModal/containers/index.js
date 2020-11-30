@@ -48,8 +48,6 @@ const OrderModal = ( {card, errors, deleteCurrentCard, validateInputs }) => {
             
             values.phone = phoneValue
         }
-        
-       
 
         validate( {values, errors} )
 
